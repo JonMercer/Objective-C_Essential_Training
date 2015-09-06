@@ -15,4 +15,8 @@
     NSLog(@"Some Method Call");
 }
 
+-(int) addNum: (int) a toNum: (int) b {
+    return a + b;
+}
+
 @end

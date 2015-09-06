@@ -22,6 +22,9 @@ int main(int argc, const char * argv[]) {
         //Not sure if getter is set automatically too
         [fred setName:@"Fred Smith"];
         
+        int result = [fred addNum:5 toNum:6];
+        NSLog(@"Result is %i", result);
+        
 
     }
     return 0;

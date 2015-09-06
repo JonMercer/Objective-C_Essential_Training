@@ -18,4 +18,7 @@
 //takes no parameters
 - (void) someMethod;
 
+// Two parameters
+-(int) addNum: (int) a toNum: (int) b;
+
 @end
