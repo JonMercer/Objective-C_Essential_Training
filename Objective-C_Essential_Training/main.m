@@ -7,12 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Employee.h"
+#import "Player.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         NSLog(@"Hello, World!");
+        
+        Player *firstPlayer = [[Player alloc] init];
+        NSLog(@"Score is %i",[firstPlayer score]);
+        
+        Player *secondPlayer = [[Player alloc] initWithInteger:999];
+        NSLog(@"Score is %i",[secondPlayer score]);
 
     }
     return 0;
