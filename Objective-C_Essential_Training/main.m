@@ -10,6 +10,8 @@
 
 void sampleFunction(void);
 
+void passingObject(NSString* x);
+
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -27,6 +29,14 @@ int main(int argc, const char * argv[]) {
             
             sampleFunction();
             
+            
+            
+            NSString *myString = @"This is my string";
+            passingObject(myString);
+            
+            
+            
+            
         }
     }
     return 0;
@@ -36,4 +46,8 @@ void sampleFunction(void) {
     for(int i = 1 ; i < 3 ; i++) {
         NSLog(@"Inside While");
     }
+}
+
+void passingObject(NSString* x) {
+    NSLog(@"The string is: %@", x);
 }
