@@ -13,18 +13,6 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         NSLog(@"Hello, World!");
-        
-        Employee *fred = [[Employee alloc] init];
-        
-        [fred someMethod];
-        
-        //This setter is automatically generated
-        //Not sure if getter is set automatically too
-        [fred setName:@"Fred Smith"];
-        
-        int result = [fred addNum:5 toNum:6];
-        NSLog(@"Result is %i", result);
-        
 
     }
     return 0;
