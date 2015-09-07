@@ -149,3 +149,142 @@ NSDate *myDate = [[NSDate alloc] init];
   - has NSObject as parent
 - `import "MyHeader.h"` meant for package class
 - `import <MyHeader.h>` meant for external library
+
+#Adding Methods
+- `+` is class method. Cannot access instance variables
+- parameters
+  - `(int) timesTen: (int) num;`
+  - `(NSString * ) createMessage: (NSString *) input;`
+    - accepts and returns object type
+  - `(int) addNumber: (int) a toNumber: (int) b;`
+    - two parameters and returns and int
+
+#Properties
+- `@property` generates setters and getters
+  - in the past, we had to do `@synthesize` to grab property values. Not anymore
+  - the getter is just the name of variable
+  - :question: I think `_foo` grabs the instance variable
+- Property
+  - `@property (strong) NSString *firstName;`
+    - Default value in ARC
+  - `@property (weak) NSString *firstName;`
+    - Object deleted when all strong ties are gone
+  - `@property (readonly) NSString *firstName;`
+    - only getters
+  - `@property (nonatomic) NSString *firstName;`
+    - thread safety
+- Class variables (the private ones). Placed in .m file
+
+```objective-c
+@implementation Player
+{
+  int privateValue;
+}
+//....
+@end
+```
+
+#Initializers
+- in `.m` file, init already defined in `.h` by default
+  - kind of like custom constructors
+
+```objective-c
+@implementation Player
+-(id) init
+{
+  self = [super init];
+  if(self) {
+    _ score
+  }
+  return self
+}
+@end
+```
+- Custom inits have to be declared in .h file
+
+#Dealloc
+- Destroys objects
+  - we don't usually have to write this
+    - only when we shut down a server or a file stream
+  - Historically, it's to release objects your object created
+- You can create your own dealloc method, but it's not called
+
+#Collections
+
+##Arrays
+- No bound checking
+- size declared
+- Cant mix types
+
+##NSArrays
+- `NSArray *newArray = @[...]`
+- Cannot add things once created
+  - can use `NSMutableArray` if you want to change things
+    - add adds one to end. Remove deletes one and moves indexes
+
+## Dictionary
+- Like a map
+- shortcut: `@{ key:object, key2:object2}`
+
+## Foreach (aka forin)
+- faster under the hood
+- looks like java
+
+#Saving a file
+- `NSKeyedArchiver` (encoding)
+- `NSkeyedUnarchiver` (decoding)
+- saves a plist
+- class to encode/decode must follow the `<NSCoding>` protocol (added in .h file)
+  - implement `encodeWithCoder`
+  - implement `initWithCoder`
+
+#Description
+- like toString() in java
+
+#Inheritance
+- `NSObject` has alloc and init
+  - objective-c doesn't use inheritance as much as other OO languages
+
+#Categories
+- Adds a method to a super class without needing to sub-class it
+- `@interface ClassToExtend (MyCategoryName)`
+- remember to import header file
+- **can only add methods not properties**
+
+#Class Extensions
+- Like categories, except we add properties
+  - must own the source code though
+- Can write private methods this way, but should be done in .m file instead of .h
+
+```objective-c
+@interface foo ()
+@property //...
+@end
+```
+
+#Protocol
+- standardization between objects
+  - similar to interface in java
+- only a list of methods
+  - to conform to protocol, use `<Foo>`
+
+```objective-c
+@protocol Cleaner
+@required
+  - (void) cleanFloors;
+
+@optional
+  - (void) cleanWindows;
+
+@end
+```
+
+#Dynamic Typing
+- :question: kind of like generics in java?
+- `id`
+  - the generic pointer
+- `for ( id currentObject in bunchOfObjects)`
+
+#Exceptions
+- treated much more seriously than in java
+  - used to exit the app gracefully
